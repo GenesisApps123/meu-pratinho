@@ -18,11 +18,22 @@
 
 <h1>🍛 Meu Pratinho</h1>
 
-<input type="text" id="nome" placeholder="Nome do Cliente">
+<input
+type="text"
+id="nome"
+placeholder="Nome do Cliente"
+>
 
-<input type="text" id="endereco" placeholder="Endereço">
+<input
+type="text"
+id="endereco"
+placeholder="Endereço"
+>
 
-<select id="pagamento">
+<select
+id="pagamento"
+onchange="verificarPagamento()"
+>
 
 <option>Dinheiro</option>
 <option>Pix</option>
@@ -30,7 +41,15 @@
 
 </select>
 
-<input type="number" id="troco" placeholder="Troco para">
+<div id="trocoDiv" class="hidden">
+
+<input
+type="number"
+id="troco"
+placeholder="Troco para quanto?"
+>
+
+</div>
 
 <select id="arroz">
 
@@ -41,33 +60,103 @@
 
 </select>
 
-<textarea id="misturas" placeholder="Misturas"></textarea>
+<textarea
+id="misturas"
+placeholder="Misturas"
+></textarea>
 
 <h3>Adicionais</h3>
 
 <label>
-<input type="checkbox" class="adicional" value="Batata Frita">
+<input
+type="checkbox"
+class="adicional"
+value="Batata Frita"
+>
 Batata Frita
 </label>
 
 <label>
-<input type="checkbox" class="adicional" value="Farofa">
+<input
+type="checkbox"
+class="adicional"
+value="Chips de Macaxeira"
+>
+Chips de Macaxeira
+</label>
+
+<label>
+<input
+type="checkbox"
+class="adicional"
+value="Farofa"
+>
 Farofa
 </label>
 
 <label>
-<input type="checkbox" class="adicional" value="Salada">
+<input
+type="checkbox"
+class="adicional"
+value="Salada"
+>
 Salada
+</label>
+
+<label>
+<input
+type="checkbox"
+class="adicional"
+value="Macarrão Refogado"
+>
+Macarrão Refogado
+</label>
+
+<label>
+<input
+type="checkbox"
+class="adicional"
+value="Cuscuz Nordestino"
+>
+Cuscuz Nordestino
 </label>
 
 <h3>Refrigerante</h3>
 
-<select id="refrigerante">
+<select
+id="refrigerante"
+onchange="verificarRefri()"
+>
 
-<option value="Nao">Não</option>
-<option value="Sim">Sim</option>
+<option value="Nao">
+Não
+</option>
+
+<option value="Sim">
+Sim
+</option>
 
 </select>
+
+<div id="tipoRefriDiv" class="hidden">
+
+<input
+type="text"
+id="tipoRefri"
+placeholder="Qual refrigerante?"
+>
+
+</div>
+
+<input
+type="number"
+id="total"
+placeholder="Total R$"
+>
+
+<button onclick="adicionarCarrinho()">
+Adicionar Pratinho
+</button>
 
 <h3>Carrinho</h3>
 
@@ -77,19 +166,36 @@ Salada
 TOTAL: R$ 0,00
 </h2>
 
-<button onclick="adicionarCarrinho()">
-Adicionar Pratinho
-</button>
-
-<input type="text" id="tipoRefri" placeholder="Qual refrigerante?">
-
-<input type="number" id="total" placeholder="Total R$">
-
-<textarea id="observacao" placeholder="Observação"></textarea>
+<textarea
+id="observacao"
+placeholder="Observação"
+></textarea>
 
 <button onclick="finalizarPedido()">
 FINALIZAR PEDIDO
 </button>
+
+<div class="historico">
+
+<h3>
+Histórico de Pedidos
+</h3>
+
+<div id="listaPedidos"></div>
+
+<button onclick="imprimirHistorico()">
+Imprimir Histórico
+</button>
+
+<button onclick="salvarHistorico()">
+Salvar Histórico
+</button>
+
+<button onclick="limparHistorico()">
+Limpar Histórico
+</button>
+
+</div>
 
 </div>
 
