@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Meu Pratinho</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🍛 Meu Pratinho</h1>
+
+<input type="text" id="nome" placeholder="Nome do Cliente">
+
+<input type="text" id="endereco" placeholder="Endereço">
+
+<select id="pagamento">
+
+<option>Dinheiro</option>
+<option>Pix</option>
+<option>Cartão</option>
+
+</select>
+
+<input type="number" id="troco" placeholder="Troco para">
+
+<select id="arroz">
+
+<option>Arroz Branco</option>
+<option>Baião Normal</option>
+<option>Baião Mole</option>
+<option>Não Quero</option>
+
+</select>
+
+<textarea id="misturas" placeholder="Misturas"></textarea>
+
+<h3>Adicionais</h3>
+
+<label>
+<input type="checkbox" class="adicional" value="Batata Frita">
+Batata Frita
+</label>
+
+<label>
+<input type="checkbox" class="adicional" value="Farofa">
+Farofa
+</label>
+
+<label>
+<input type="checkbox" class="adicional" value="Salada">
+Salada
+</label>
+
+<h3>Refrigerante</h3>
+
+<select id="refrigerante">
+
+<option value="Nao">Não</option>
+<option value="Sim">Sim</option>
+
+</select>
+
+<input type="text" id="tipoRefri" placeholder="Qual refrigerante?">
+
+<input type="number" id="total" placeholder="Total R$">
+
+<textarea id="observacao" placeholder="Observação"></textarea>
+
+<button onclick="finalizarPedido()">
+FINALIZAR PEDIDO
+</button>
+
+</div>
+
+<div id="printArea"></div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
