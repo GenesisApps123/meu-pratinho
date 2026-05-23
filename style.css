@@ -3,24 +3,40 @@ body{
 margin:0;
 padding:20px;
 background:#f5f5f5;
-font-family:Arial;
+font-family:Arial, sans-serif;
 
 }
 
 .container{
 
-max-width:500px;
+max-width:550px;
 margin:auto;
 background:white;
 padding:20px;
-border-radius:15px;
-box-shadow:0 0 15px rgba(0,0,0,0.1);
+border-radius:18px;
+box-shadow:0 0 20px rgba(0,0,0,0.08);
 
 }
 
-h1,h3{
+h1{
 
 text-align:center;
+margin-bottom:20px;
+font-size:32px;
+
+}
+
+h2{
+
+text-align:center;
+
+}
+
+h3{
+
+text-align:center;
+margin-top:25px;
+margin-bottom:15px;
 
 }
 
@@ -32,10 +48,26 @@ button{
 width:100%;
 padding:14px;
 margin-bottom:12px;
-border-radius:10px;
-border:1px solid #ccc;
+border-radius:12px;
+border:1px solid #dcdcdc;
 box-sizing:border-box;
 font-size:16px;
+outline:none;
+
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+
+border:1px solid #000;
+
+}
+
+textarea{
+
+resize:none;
+min-height:90px;
 
 }
 
@@ -46,21 +78,193 @@ color:white;
 border:none;
 font-weight:bold;
 cursor:pointer;
+transition:0.3s;
 
 }
 
 button:hover{
 
 background:#222;
+transform:scale(1.01);
 
 }
 
 label{
 
 display:block;
+margin-bottom:12px;
+font-size:15px;
+
+}
+
+.hidden{
+
+display:none;
+
+}
+
+/* CARRINHO */
+
+#carrinho{
+
+margin-top:15px;
+
+}
+
+.item-carrinho{
+
+background:#fafafa;
+padding:12px;
+margin-bottom:12px;
+border-radius:12px;
+border:1px solid #ddd;
+box-shadow:0 2px 5px rgba(0,0,0,0.03);
+
+}
+
+.item-carrinho button{
+
+margin-top:10px;
+background:#d62828;
+
+}
+
+.item-carrinho button:hover{
+
+background:#b71c1c;
+
+}
+
+#totalCarrinho{
+
+background:#000;
+color:white;
+padding:15px;
+border-radius:12px;
+font-size:24px;
+
+}
+
+/* HISTÓRICO */
+
+.historico{
+
+margin-top:35px;
+background:#fafafa;
+padding:15px;
+border-radius:15px;
+border:1px solid #ddd;
+
+}
+
+.item-historico{
+
+padding:12px;
+border-bottom:1px solid #ddd;
+cursor:pointer;
+transition:0.3s;
+border-radius:8px;
+
+}
+
+.item-historico:last-child{
+
+border-bottom:none;
+
+}
+
+.item-historico:hover{
+
+background:#ececec;
+
+}
+
+/* IMPRESSÃO */
+
+.cupom{
+
+width:80mm;
+padding:5px;
+font-family:monospace;
+font-size:13px;
+color:black;
+
+}
+
+.topo{
+
+text-align:center;
+
+}
+
+.logo{
+
+width:90px;
+display:block;
+margin:auto;
 margin-bottom:10px;
 
 }
+
+.total{
+
+font-size:30px;
+font-weight:bold;
+text-align:center;
+margin-top:10px;
+margin-bottom:10px;
+
+}
+
+.rodape{
+
+text-align:center;
+font-size:11px;
+margin-top:10px;
+
+}
+
+hr{
+
+border:none;
+border-top:1px dashed #000;
+margin:10px 0;
+
+}
+
+/* BOTÕES DO HISTÓRICO */
+
+.historico button{
+
+margin-top:8px;
+
+}
+
+/* RESPONSIVO */
+
+@media screen and (max-width:600px){
+
+body{
+
+padding:10px;
+
+}
+
+.container{
+
+padding:15px;
+
+}
+
+h1{
+
+font-size:28px;
+
+}
+
+}
+
+/* IMPRESSÃO TÉRMICA */
 
 @media print{
 
@@ -88,98 +292,9 @@ padding:5px;
 
 }
 
-.cupom{
+button{
 
-font-family:monospace;
-font-size:13px;
-
-}
-
-.topo{
-
-text-align:center;
-
-}
-
-.logo{
-
-width:80px;
-display:block;
-margin:auto;
-
-}
-
-.item-carrinho{
-
-background:#f5f5f5;
-padding:10px;
-margin-bottom:10px;
-border-radius:10px;
-border:1px solid #ddd;
-
-}
-
-.item-historico{
-
-cursor:pointer;
-transition:0.3s;
-
-}
-
-.item-historico:hover{
-
-background:#eee;
-
-}
-
-.cupom{
-
-width:80mm;
-font-family:monospace;
-padding:5px;
-
-}
-
-.logo{
-
-width:80px;
-display:block;
-margin:auto;
-
-}
-
-.topo{
-
-text-align:center;
-
-}
-
-.total{
-
-font-size:30px;
-font-weight:bold;
-text-align:center;
-
-}
-
-.rodape{
-
-text-align:center;
-font-size:11px;
-
-}
-
-.total{
-
-text-align:center;
-font-size:28px;
-font-weight:bold;
-
-}
-
-hr{
-
-border-top:1px dashed black;
+display:none !important;
 
 }
 
