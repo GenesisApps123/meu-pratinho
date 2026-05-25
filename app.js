@@ -124,15 +124,32 @@ div.innerHTML += `
 
 <div class="item-carrinho">
 
-<b>${item.tipo}</b><br>
+<b>
+🍱 Quentinha ${index + 1}
+</b>
 
-${item.misturas}<br>
+<hr>
 
-${item.adicionais.join(", ")}<br>
+<b>${item.tipo}</b><br><br>
 
-Refri: ${item.refrigerante}<br>
+${item.misturas}<br><br>
 
-<b>R$ ${item.valor.toFixed(2)}</b>
+<b>Adicionais:</b><br>
+${item.adicionais.length > 0
+? item.adicionais.join(", ")
+: "Nenhum"
+}
+
+<br><br>
+
+<b>Refri:</b>
+${item.refrigerante}
+
+<br><br>
+
+<b>
+R$ ${item.valor.toFixed(2)}
+</b>
 
 <button onclick="removerCarrinho(${index})">
 Remover
@@ -252,32 +269,48 @@ function imprimirPedido(pedido){
 
 let htmlItens = "";
 
-pedido.itens.forEach(item=>{
+pedido.itens.forEach((item,index)=>{
 
 htmlItens += `
+
+<div class="item-print">
+
+<h3>
+🍱 QUENTINHA ${index + 1}
+</h3>
 
 <hr>
 
 <p>
-<b>${item.tipo}</b>
+<b>Arroz:</b><br>
+${item.tipo}
 </p>
 
 <p>
+<b>Misturas:</b><br>
 ${item.misturas}
 </p>
 
 <p>
-${item.adicionais.join(", ")}
+<b>Adicionais:</b><br>
+${item.adicionais.length > 0
+? item.adicionais.join(", ")
+: "Nenhum"
+}
 </p>
 
 <p>
-Refri:
+<b>Refrigerante:</b><br>
 ${item.refrigerante}
 </p>
 
-<p>
+<div class="total">
 R$ ${item.valor.toFixed(2)}
-</p>
+</div>
+
+</div>
+
+<hr class="linha-separadora">
 
 `;
 
@@ -320,33 +353,42 @@ ${pedido.endereco}
 </p>
 
 <p>
-<b>Pagamento:</b>
+<b>Pagamento:</b><br>
 ${pedido.pagamento}
 </p>
 
 ${pedido.pagamento === "Dinheiro"
 ? `
 <p>
-<b>Troco:</b>
+<b>Troco para:</b><br>
 R$ ${pedido.troco}
 </p>
 `
 : ""
 }
 
+<hr>
+
 ${htmlItens}
+
+<h3>
+📝 Observação
+</h3>
+
+<p>
+${pedido.observacao || "Sem observações"}
+</p>
 
 <hr>
 
 <div class="total">
+TOTAL GERAL<br>
 R$ ${pedido.total}
 </div>
 
-<p>
-${pedido.observacao || ""}
-</p>
-
 <p class="rodape">
+❤️ Obrigado pela preferência
+<br>
 Genesis Apps
 </p>
 
