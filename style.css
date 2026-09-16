@@ -284,45 +284,44 @@ font-size:28px;
 
 }
 
-/* IMPRESSÃO TÉRMICA CORRIGIDA */
+/* IMPRESSÃO TÉRMICA */
 
-@media print {
-    @page {
-        size: 80mm auto;
-        margin: 0;
-    }
+@media print{
 
-    body * {
-        display: none !important;
-    }
+body *{
 
-    #printArea, 
-    #printArea * {
-        display: block !important;
-    }
+visibility:hidden;
 
-    #printArea {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 80mm !important;
-        max-width: 80mm !important;
-        margin: 0 !important;
-        padding: 5px !important;
-        background: #ffffff !important;
-    }
+}
 
-    .cupom {
-        width: 100% !important;
-    }
+#printArea,
+#printArea *{
 
-    .item-print {
-        border: 2px dashed #000 !important;
-        background: #fff !important;
-        page-break-inside: avoid;
-    }
+visibility:visible;
 
-    .linha-separadora {
-        border-top: 3px dashed #000 !important;
-    }
+}
+
+#printArea{
+
+position:absolute;
+left:0;
+top:0;
+width:80mm;
+background:white;
+padding:5px;
+
+}
+
+button{
+
+display:none !important;
+
+}
+
+.item-print{
+
+page-break-inside:avoid;
+
+}
+
 }
