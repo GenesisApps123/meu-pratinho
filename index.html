@@ -2,118 +2,215 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Pratinho</title>
-    <link rel="stylesheet" href="style.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Meu Pratinho</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <h1>🍛 Meu Pratinho</h1>
+<h1>🍛 Meu Pratinho</h1>
 
-        <input type="text" id="nome" placeholder="Nome do Cliente">
+<input
+type="text"
+id="nome"
+placeholder="Nome do Cliente"
+>
 
-        <input type="text" id="endereco" placeholder="Endereço">
+<input
+type="text"
+id="endereco"
+placeholder="Endereço"
+>
 
-        <select id="pagamento" onchange="verificarPagamento()">
-            <option>Dinheiro</option>
-            <option>Pix</option>
-            <option>Cartão</option>
-        </select>
+<select
+id="pagamento"
+onchange="verificarPagamento()"
+>
 
-        <div id="trocoDiv" class="hidden">
-            <input type="number" id="troco" placeholder="Troco para quanto?">
-        </div>
+<option>Dinheiro</option>
+<option>Pix</option>
+<option>Cartão</option>
 
-        <select id="arroz">
-            <option>Arroz Branco</option>
-            <option>Baião Normal</option>
-            <option>Baião Mole</option>
-            <option>Não Quero</option>
-        </select>
+</select>
 
-        <textarea id="misturas" placeholder="Misturas"></textarea>
+<div id="trocoDiv" class="hidden">
 
-        <h3>Adicionais</h3>
+<input
+type="number"
+id="troco"
+placeholder="Troco para quanto?"
+>
 
-        <label>
-            <input type="checkbox" class="adicional" value="Batata Frita">
-            Batata Frita
-        </label>
+</div>
 
-        <label>
-            <input type="checkbox" class="adicional" value="Chips de Macaxeira">
-            Chips de Macaxeira
-        </label>
+<select id="arroz">
 
-        <label>
-            <input type="checkbox" class="adicional" value="Farofa">
-            Farofa
-        </label>
+<option>Arroz Branco</option>
+<option>Baião Normal</option>
+<option>Baião Mole</option>
+<option>Não Quero</option>
 
-        <label>
-            <input type="checkbox" class="adicional" value="Feijão de corda">
-            Feijão de corda
-        </label>
+</select>
 
-        <label>
-            <input type="checkbox" class="adicional" value="Salada">
-            Salada
-        </label>
+<textarea
+id="misturas"
+placeholder="Misturas"
+></textarea>
 
-        <label>
-            <input type="checkbox" class="adicional" value="Macarrão Refogado">
-            Macarrão Refogado
-        </label>
+<h3>Adicionais</h3>
 
-        <label>
-            <input type="checkbox" class="adicional" value="Cuscuz Nordestino">
-            Cuscuz Nordestino
-        </label>
+<label>
+<input
+type="checkbox"
+class="adicional"
+value="Batata Frita"
+>
+Batata Frita
+</label>
 
-        <h3>Refrigerante</h3>
+<label>
+<input
+type="checkbox"
+class="adicional"
+value="Chips de Macaxeira"
+>
+Chips de Macaxeira
+</label>
 
-        <select id="refrigerante" onchange="verificarRefri()">
-            <option value="Nao">Não</option>
-            <option value="Sim">Sim</option>
-        </select>
+<label>
+<input
+type="checkbox"
+class="adicional"
+value="Farofa"
+>
+Farofa
+</label>
 
-        <div id="tipoRefriDiv" class="hidden">
-            <input type="text" id="tipoRefri" placeholder="Qual refrigerante?">
-        </div>
+<label>
+<input
+type="checkbox"
+class="adicional"
+value="Feijão de corda"
+>
+Feijão de corda
+</label>
 
-        <input type="number" id="total" placeholder="Total R$">
+<label>
+<input
+type="checkbox"
+class="adicional"
+value="Salada"
+>
+Salada
+</label>
 
-        <button onclick="adicionarCarrinho()">Adicionar Pratinho</button>
+<label>
+<input
+type="checkbox"
+class="adicional"
+value="Macarrão Refogado"
+>
+Macarrão Refogado
+</label>
 
-        <h3>Carrinho</h3>
+<label>
+<input
+type="checkbox"
+class="adicional"
+value="Cuscuz Nordestino"
+>
+Cuscuz Nordestino
+</label>
 
-        <div id="carrinho"></div>
+<h3>Refrigerante</h3>
 
-        <h2 id="totalCarrinho">TOTAL: R$ 0,00</h2>
+<select
+id="refrigerante"
+onchange="verificarRefri()"
+>
 
-        <textarea id="observacao" placeholder="Observação"></textarea>
+<option value="Nao">
+Não
+</option>
 
-        <button onclick="finalizarPedido()">FINALIZAR PEDIDO</button>
+<option value="Sim">
+Sim
+</option>
 
-        <div class="historico">
-            <h3>Histórico de Pedidos</h3>
-            <div id="listaPedidos"></div>
+</select>
 
-            <button onclick="imprimirHistorico()">Imprimir Histórico</button>
-            <button onclick="salvarHistorico()">Salvar Histórico</button>
-            <button onclick="limparHistorico()">Limpar Histórico</button>
-        </div>
+<div id="tipoRefriDiv" class="hidden">
 
-    </div>
+<input
+type="text"
+id="tipoRefri"
+placeholder="Qual refrigerante?"
+>
 
-    <!-- Área reservada exclusivamente para exibir o cupom formatado na hora de imprimir -->
-    <div id="printArea"></div>
+</div>
 
-    <script src="app.js"></script>
+<input
+type="number"
+id="total"
+placeholder="Total R$"
+>
+
+<button onclick="adicionarCarrinho()">
+Adicionar Pratinho
+</button>
+
+<h3>Carrinho</h3>
+
+<div id="carrinho"></div>
+
+<h2 id="totalCarrinho">
+TOTAL: R$ 0,00
+</h2>
+
+<textarea
+id="observacao"
+placeholder="Observação"
+></textarea>
+
+<button onclick="finalizarPedido()">
+FINALIZAR PEDIDO
+</button>
+
+<div class="historico">
+
+<h3>
+Histórico de Pedidos
+</h3>
+
+<div id="listaPedidos"></div>
+
+<button onclick="imprimirHistorico()">
+Imprimir Histórico
+</button>
+
+<button onclick="salvarHistorico()">
+Salvar Histórico
+</button>
+
+<button onclick="limparHistorico()">
+Limpar Histórico
+</button>
+
+</div>
+
+</div>
+
+<div id="printArea"></div>
+
+<script src="app.js"></script>
 
 </body>
 </html>
