@@ -1,38 +1,328 @@
-/* AJUSTES FINAIS PARA IMPRESSORAS TÉRMICAS */
+body{
+
+margin:0;
+padding:20px;
+background:#f5f5f5;
+font-family:Arial, sans-serif;
+
+}
+
+.container{
+
+max-width:550px;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:18px;
+box-shadow:0 0 20px rgba(0,0,0,0.08);
+
+}
+
+h1{
+
+text-align:center;
+margin-bottom:20px;
+font-size:32px;
+
+}
+
+h2{
+
+text-align:center;
+
+}
+
+h3{
+
+text-align:center;
+margin-top:25px;
+margin-bottom:15px;
+
+}
+
+input,
+select,
+textarea,
+button{
+
+width:100%;
+padding:14px;
+margin-bottom:12px;
+border-radius:12px;
+border:1px solid #dcdcdc;
+box-sizing:border-box;
+font-size:16px;
+outline:none;
+
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+
+border:1px solid #000;
+
+}
+
+textarea{
+
+resize:none;
+min-height:90px;
+
+}
+
+button{
+
+background:#000;
+color:white;
+border:none;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+
+}
+
+button:hover{
+
+background:#222;
+transform:scale(1.01);
+
+}
+
+label{
+
+display:block;
+margin-bottom:12px;
+font-size:15px;
+
+}
+
+.hidden{
+
+display:none;
+
+}
+
+/* CARRINHO */
+
+#carrinho{
+
+margin-top:15px;
+
+}
+
+.item-carrinho{
+
+background:#fafafa;
+padding:12px;
+margin-bottom:12px;
+border-radius:12px;
+border:1px solid #ddd;
+box-shadow:0 2px 5px rgba(0,0,0,0.03);
+
+}
+
+.item-carrinho button{
+
+margin-top:10px;
+background:#d62828;
+
+}
+
+.item-carrinho button:hover{
+
+background:#b71c1c;
+
+}
+
+#totalCarrinho{
+
+background:#000;
+color:white;
+padding:15px;
+border-radius:12px;
+font-size:24px;
+
+}
+
+/* HISTÓRICO */
+
+.historico{
+
+margin-top:35px;
+background:#fafafa;
+padding:15px;
+border-radius:15px;
+border:1px solid #ddd;
+
+}
+
+.item-historico{
+
+padding:12px;
+border-bottom:1px solid #ddd;
+cursor:pointer;
+transition:0.3s;
+border-radius:8px;
+
+}
+
+.item-historico:last-child{
+
+border-bottom:none;
+
+}
+
+.item-historico:hover{
+
+background:#ececec;
+
+}
+
+/* IMPRESSÃO */
+
+.cupom{
+
+width:80mm;
+padding:5px;
+font-family:monospace;
+font-size:13px;
+color:black;
+
+}
+
+.topo{
+
+text-align:center;
+
+}
+
+.total{
+
+font-size:28px;
+font-weight:bold;
+text-align:center;
+margin-top:10px;
+margin-bottom:10px;
+
+}
+
+.rodape{
+
+text-align:center;
+font-size:11px;
+margin-top:10px;
+
+}
+
+hr{
+
+border:none;
+border-top:1px dashed #000;
+margin:12px 0;
+
+}
+
+/* SEPARAÇÃO DAS QUENTINHAS */
+
+.item-print{
+
+padding:12px;
+margin-bottom:18px;
+border:2px dashed #000;
+border-radius:10px;
+background:#fff;
+
+}
+
+.item-print h3{
+
+margin-top:0;
+margin-bottom:10px;
+font-size:20px;
+text-align:center;
+
+}
+
+.linha-separadora{
+
+margin:20px 0;
+border:none;
+border-top:3px dashed #000;
+
+}
+
+/* BOTÕES DO HISTÓRICO */
+
+.historico button{
+
+margin-top:8px;
+
+}
+
+/* RESPONSIVO */
+
+@media screen and (max-width:600px){
+
+body{
+
+padding:10px;
+
+}
+
+.container{
+
+padding:15px;
+
+}
+
+h1{
+
+font-size:28px;
+
+}
+
+}
+
+/* IMPRESSÃO TÉRMICA CORRIGIDA */
+
 @media print {
-    /* Reseta a página para modo retrato, sem margens do navegador */
     @page {
         size: 80mm auto;
-        margin: 0mm;
+        margin: 0;
     }
 
-    body {
-        background: white !important;
-        margin: 0 !important;
-        padding: 0 !important;
+    body * {
+        display: none !important;
     }
 
-    /* Garante visibilidade absoluta apenas da área de cupom/impressão */
-    #printArea {
+    #printArea, 
+    #printArea * {
         display: block !important;
+    }
+
+    #printArea {
         position: absolute;
         left: 0;
         top: 0;
         width: 80mm !important;
         max-width: 80mm !important;
         margin: 0 !important;
-        padding: 2mm !important;
-        background: white !important;
+        padding: 5px !important;
+        background: #ffffff !important;
     }
 
-    /* Esconde elementos indesejados da interface principal por garantia */
-    .container, 
-    button, 
-    input, 
-    select, 
-    textarea, 
-    label, 
-    .historico {
-        display: none !important;
+    .cupom {
+        width: 100% !important;
+    }
+
+    .item-print {
+        border: 2px dashed #000 !important;
+        background: #fff !important;
+        page-break-inside: avoid;
+    }
+
+    .linha-separadora {
+        border-top: 3px dashed #000 !important;
     }
 }
