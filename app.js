@@ -7,6 +7,16 @@ let carrinho = [];
 
 let editandoPedido = null;
 
+function removerAcentos(texto){
+if(!texto) return "";
+return texto
+.toString()
+.normalize("NFD")
+.replace(/[\u0300-\u036f]/g, "")
+.replace(/[çÇ]/g, "c")
+.replace(/[ºª]/g, "");
+}
+
 function gerarNumeroPedido(){
 
 return Math.floor(
@@ -84,7 +94,7 @@ adicionais,
 refrigerante:
 document.getElementById("refrigerante").value === "Sim"
 ? document.getElementById("tipoRefri").value
-: "Não",
+: "Nao",
 
 valor:
 parseFloat(
@@ -257,11 +267,60 @@ atualizarHistorico();
 
 imprimirPedido(pedido);
 
+enviarWhatsApp(pedido);
+
 carrinho=[];
 
 atualizarCarrinho();
 
 limparFormulario();
+
+}
+
+function enviarWhatsApp(pedido){
+
+let texto = "";
+
+texto += `PEDIDO #${pedido.numero}\n`;
+texto += `DATA: ${pedido.data}\n\n`;
+texto += `CLIENTE: ${pedido.nome}\n`;
+texto += `ENDERECO: ${pedido.endereco}\n`;
+texto += `PAGAMENTO: ${pedido.pagamento}\n`;
+
+if(pedido.pagamento === "Dinheiro" && pedido.troco){
+
+texto += `TROCO PARA: R$ ${pedido.troco}\n`;
+
+}
+
+texto += `\n--- ITENS DO PEDIDO ---\n`;
+
+pedido.itens.forEach((item, index) => {
+
+texto += `\nQUENTINHA ${index + 1}\n`;
+texto += `BASE: ${item.tipo}\n`;
+texto += `MISTURAS: ${item.misturas}\n`;
+
+let adicionaisStr = item.adicionais.length > 0 ? item.adicionais.join(", ") : "Nenhum";
+texto += `ADICIONAIS: ${adicionaisStr}\n`;
+texto += `REFRIGERANTE: ${item.refrigerante}\n`;
+texto += `VALOR: R$ ${item.valor.toFixed(2)}\n`;
+
+});
+
+if(pedido.observacao){
+
+texto += `\nOBSERVACAO: ${pedido.observacao}\n`;
+
+}
+
+texto += `\nTOTAL GERAL: R$ ${pedido.total}\n`;
+
+let textoLimpo = removerAcentos(texto);
+
+let url = `https://api.whatsapp.com/send?phone=5588996444527&text=${encodeURIComponent(textoLimpo)}`;
+
+window.open(url, "_blank");
 
 }
 
